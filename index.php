@@ -1,9 +1,29 @@
+<?php
+$index = file_get_contents("indexed.json");
+$notebooks = json_decode($index, true)["notebooks"];
+$kv_map = json_decode($index, true)["kvs"];
+
+$title = "CiyaZ的笔记系统";
+$bread = "主页";
+if (isset($_GET["id"]) && !empty($_GET["id"])) {
+    if (array_key_exists($_GET["id"], $kv_map)) {
+        $note_path = $kv_map[$_GET["id"]];
+        $note_path_arr = explode("/", $note_path);
+        $title = end($note_path_arr);
+        array_shift($note_path_arr);
+        $bread = implode(" > ", $note_path_arr);
+    } else {
+        $title = "404";
+        $bread = "找不到该页面";
+    }
+}
+echo <<<HTML
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>CiyaZ的笔记系统</title>
+    <title>{$title}</title>
     <link href="node_modules/@ciyaz/silicon-ui/dist/silicon-ui.css" type="text/css" rel="stylesheet"/>
     <link href="node_modules/highlightjs/styles/github.css" type="text/css" rel="stylesheet"/>
     <link href="app/app.min.css" type="text/css" rel="stylesheet"/>
@@ -19,9 +39,8 @@
             <button class="si-btn si-bg-light-green si-fg-white" onclick="toggle_modal()">close</button>
         </p>
         <ul style="text-align: left; padding: 35px" id="tree-view" class="si-list si-bg-white">
-            <?php
-                $index = json_decode(file_get_contents("indexed.json"), true)["notebooks"];
-                foreach ($index as $notebook) {
+HTML;
+                foreach ($notebooks as $notebook) {
                     echo "<li class=\"collapsible\">";
                     echo "<span>".$notebook["name"]."</span>";
                     echo "</li>";
@@ -44,7 +63,7 @@
                     echo "</ul>";
                     echo "</li>";
                 }
-            ?>
+echo <<<HTML
         </ul>
         <p>
             <button class="si-btn si-bg-light-green si-fg-white" onclick="toggle_modal()">close</button>
@@ -57,21 +76,22 @@
     </span>
 </div>
 <div class="container">
-    <div class="si-panel si-bg-white" style="margin-top: 45px; text-align: right">
-        <span>
-            <a href="index.php" class="si-btn si-fg-white si-bg-light-green">主页</a>
-        </span>
-        <span>
-            <button class="si-btn si-fg-white si-bg-light-green" onclick="toggle_modal()"
-                    style="margin-right: 4px;">目录</button>
-        </span>
+    <a href="index.php" class="si-btn si-fg-green" style="position: fixed; top: 70px;right: 0;z-index: 1;background-color: #E9F1DF;">主页</a>
+    <button class="si-btn si-fg-green" onclick="toggle_modal()" style="position: fixed; top: 120px;right: 0;z-index: 1;background-color: #E9F1DF;">目录</button>
+    <div class="si-panel si-bg-white" style="margin-top: 45px">
+        {$bread}
     </div>
     <div class="si-panel si-bg-white" style="margin-top: 5px">
-        <?php
+HTML;
 
         require "vendor/autoload.php";
         if (isset($_GET["id"]) && !empty($_GET["id"])) {
-            echo render_post($_GET["id"]);
+            $post_rendered = render_post($kv_map, $_GET["id"]);
+            if($post_rendered != null) {
+                echo $post_rendered;
+            } else {
+                echo "<div style=\"text-align: center\"><h1>404</h1></div>";
+            }
         } else {
             echo render_index();
         }
@@ -83,9 +103,8 @@
             return $parser->text($md);
         }
 
-        function render_post($hash_key)
+        function render_post($kv_map, $hash_key)
         {
-            $kv_map = json_decode(file_get_contents("indexed.json"), true)["kvs"];
             if (array_key_exists($hash_key, $kv_map)) {
                 $note_path = $kv_map[$hash_key];
                 $note_md_path = get_md_path($note_path);
@@ -104,11 +123,14 @@
             return $note_path . "/" . end($note_path_arr) . ".md";
         }
 
-        ?>
+echo <<<HTML
     </div>
     <div class="si-panel si-bg-white" style="margin-top: 5px; text-align: center;">
         <p class="si-fg-gray" style="font-size: 12px">
             Copyright © 2017-2019 CiyaZ All Rights Reserved.
+        </p>
+        <p class="si-fg-gray" style="font-size: 12px">
+            Powered By <a href="https://github.com/CiyaZ/note2blog-ssr" style="text-decoration: none">note2blog-ssr</a>
         </p>
     </div>
 </div>
@@ -122,3 +144,4 @@
 </script>
 </body>
 </html>
+HTML;

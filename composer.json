@@ -1,0 +1,14 @@
+{
+	"name": "ciyaz/note2blog-v2",
+	"type": "project",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "CiyaZ",
+			"email": "ciyaz@qq.com"
+		}
+	],
+	"require": {
+		"erusev/parsedown": "^1.7"
+	}
+}

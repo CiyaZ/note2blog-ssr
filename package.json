@@ -1,0 +1,9 @@
+{
+  "name": "note2blog-v2",
+  "version": "0.1.0-alpha",
+  "license": "MIT",
+  "dependencies": {
+    "@ciyaz/silicon-ui": "^0.1.0",
+    "highlightjs": "^9.12.0"
+  }
+}

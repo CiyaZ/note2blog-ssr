@@ -13,6 +13,7 @@ if (isset($_GET["id"]) && !empty($_GET["id"])) {
         array_shift($note_path_arr);
         $bread = implode(" > ", $note_path_arr);
     } else {
+        http_response_code(404);
         $title = "404";
         $bread = "找不到该页面";
     }

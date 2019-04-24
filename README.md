@@ -22,10 +22,12 @@ Load markdown notes as static web pages.
 ```
 |_app 页面样式和脚本
 |_doc 笔记文档目录结构，默认其中是一个例子，删掉即可
+|_DOMAIN 这里写上您网站的域名，该配置仅用于用于站点地图URL的生成
 |_indexer-config.json 要索引的笔记本配置
 |_indexed.json 生成的索引
-|_indexer.py 索引生成器脚本
+|_indexer.py 索引和站点地图生成器脚本
 |_index.php 服务端脚本
+|_sitemap.xml 自动生成的站点地图
 ```
 
 ## 文档结构
@@ -70,7 +72,7 @@ app/app.css 一些样式，颜色，字体等
 
 ### 发布
 
-每次发布前，执行`python3 indexer.py`，刷新索引文件。索引文件能指示服务端脚本正确响应用户请求。
+每次发布前，执行`python3 indexer.py`，刷新索引文件和站点地图。索引文件能指示服务端脚本正确响应用户请求，站点地图用于指示搜索引擎抓取页面。
 
 ## 部署指南
 

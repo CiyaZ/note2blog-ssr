@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@ciyaz/silicon-ui@^0.1.0":
-  version "0.1.0"
-  resolved "http://registry.npm.taobao.org/@ciyaz/silicon-ui/download/@ciyaz/silicon-ui-0.1.0.tgz#05232be3088cbfa4cb268c2eb6babad710cd3a5f"
-  integrity sha1-BSMr4wiMv6TLJowutrq61xDNOl8=
+"@ciyaz/silicon-ui@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.npm.taobao.org/@ciyaz/silicon-ui/download/@ciyaz/silicon-ui-0.2.1.tgz#dad403d482f4b3fe3e222a0ff0ff330053ef8010"
+  integrity sha1-2tQD1IL0s/4+IioP8P8zAFPvgBA=
 
 highlightjs@^9.12.0:
   version "9.12.0"

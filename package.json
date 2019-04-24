@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha",
   "license": "MIT",
   "dependencies": {
-    "@ciyaz/silicon-ui": "^0.1.0",
+    "@ciyaz/silicon-ui": "^0.2.1",
     "highlightjs": "^9.12.0"
   }
 }

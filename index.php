@@ -39,7 +39,7 @@ echo <<<HTML
         <p>
             <button class="si-btn si-bg-light-green si-fg-white" onclick="toggle_modal()">close</button>
         </p>
-        <ul style="text-align: left; padding: 35px" id="tree-view" class="si-list si-bg-white">
+        <ul style="text-align: left; padding: 35px" id="tree-view" class="si-list si-bg-white-lighten-2">
 HTML;
                 foreach ($notebooks as $notebook) {
                     echo "<li class=\"collapsible\">";
@@ -71,18 +71,18 @@ echo <<<HTML
         </p>
     </div>
 </div>
-<div class="si-header si-bg-white">
+<div class="si-header si-bg-white-lighten-2">
     <span style="font-size: 31px; margin-left: 10px;float: left;" class="si-fg-green">
         CiyaZ的笔记系统
     </span>
 </div>
-<div class="container">
+<div class="si-container">
     <a href="index.php" class="si-btn si-fg-green" style="position: fixed; top: 70px;right: 0;z-index: 1;background-color: #E9F1DF;">主页</a>
     <button class="si-btn si-fg-green" onclick="toggle_modal()" style="position: fixed; top: 120px;right: 0;z-index: 1;background-color: #E9F1DF;">目录</button>
-    <div class="si-panel si-bg-white" style="margin-top: 45px">
+    <div class="si-panel si-bg-white-lighten-2" style="margin-top: 45px">
         {$bread}
     </div>
-    <div class="si-panel si-bg-white" style="margin-top: 5px">
+    <div class="si-panel si-bg-white-lighten-2" style="margin-top: 5px">
 HTML;
 
         require "vendor/autoload.php";
@@ -126,7 +126,7 @@ HTML;
 
 echo <<<HTML
     </div>
-    <div class="si-panel si-bg-white" style="margin-top: 5px; text-align: center;">
+    <div class="si-panel si-bg-white-lighten-2" style="margin-top: 5px; text-align: center;">
         <p class="si-fg-gray" style="font-size: 12px">
             Copyright © 2017-2019 CiyaZ All Rights Reserved.
         </p>

@@ -49,6 +49,7 @@ if __name__ == "__main__":
     fp.close()
     sitemap_doc = minidom.Document()
     root = sitemap_doc.createElement("urlset")
+    root.setAttribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
     for key in indexer_root["kvs"]:
         node_url = sitemap_doc.createElement("url")
         # 网址

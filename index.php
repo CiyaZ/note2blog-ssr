@@ -26,9 +26,9 @@ echo <<<HTML
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>{$title}</title>
     <link href="node_modules/@ciyaz/silicon-ui/dist/silicon-ui.css" type="text/css" rel="stylesheet"/>
-    <link href="node_modules/highlightjs/styles/github.css" type="text/css" rel="stylesheet"/>
+    <link href="app/vs.min.css" type="text/css" rel="stylesheet"/>
     <link href="app/app.min.css" type="text/css" rel="stylesheet"/>
-    <script src="node_modules/highlightjs/highlight.pack.min.js"></script>
+    <script src="app/highlight.pack.js"></script>
     <script src="app/app.min.js"></script>
 </head>
 <body class="si-bg-light-green">

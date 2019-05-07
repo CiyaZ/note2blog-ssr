@@ -2,6 +2,8 @@
 
 Load markdown notes as static web pages.
 
+![https://gitee.com/ciyaz/imgbed/raw/master/images/1.png](https://gitee.com/ciyaz/imgbed/raw/master/images/1.png)
+
 这个工具的用途是把markdown笔记加载成博客，功能类似`hexo`，需要部署在你自己的云服务器中。
 
 本仓库是`note2blog`的后端渲染版本，这里使用的是PHP进行加载，同时移除了原版本中庞大的字体、JQuery和CSS样式库，针对低速网络进行了针对性优化。
@@ -82,3 +84,4 @@ app/app.css 一些样式，颜色，字体等
 4. 配置`httpd`的目录指向为根目录
 5. 在`doc`文件夹中用Git拉取你的笔记结构
 
+> 注：线上版本修改了一些样式，效果图仅供参考：[https://gitee.com/ciyaz/note2blog-ssr-fork](https://gitee.com/ciyaz/note2blog-ssr-fork)
